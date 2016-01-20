@@ -29,4 +29,39 @@
   padding: 0;
 }
 
-.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+/* Padding for ng-view */
+.currentView {
+  padding:30px;
+  margin-top:50px;
+}
+
+/*.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }*/
+
+
+/* NavBar styling */
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #111;
+}

@@ -16,8 +16,8 @@
 </head>
 <body>
 
-  <nav class="navbar navbar-default" role="navigation">
-      <!-- Brand and toggle get grouped for better mobile display -->
+  <!-- <nav class="navbar navbar-default" role="navigation">
+      
       <div class="navbar-header">
 
         <button type="button" class="navbar-toggle" ng-init="navCollapsed = true" ng-click="navCollapsed = !navCollapsed">
@@ -28,20 +28,19 @@
         </button>
         <a class="navbar-brand" href="#">Brand</a>
       </div>
-    
-      <!-- Collect the nav links, forms, and other content for toggling -->
+
       <div class="collapse navbar-collapse" ng-class="!navCollapsed && 'in'" ng-click="navCollapsed = true">
       
         <ul class="nav navbar-nav">
           <li class="active"><a href="#">Link</a></li>
           <li><a href="#">Link</a></li>
         </ul>
-      </div><!-- /.navbar-collapse -->
-    </nav>
+      </div>
+    </nav> -->
 
 
 
-  <ul class="menu">
+  <ul class="">
     <li><a href="#/calendar">Calendar</a></li>
     <li><a href="#/events">Event List</a></li>
     <li><a href="#/about">About</a></li>
@@ -52,7 +51,7 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
       <![endif]-->
 
-    <div ng-view></div>
+    <div class="currentView" ng-view></div>
 
     <!-- <div>Angular seed app: v<span app-version></span></div> -->
 
