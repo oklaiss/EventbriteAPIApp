@@ -64,7 +64,7 @@ angular.module('myApp.events', ['ngRoute'])
 			}
 		];
 		// Format to work with AngularJS FullCalendar (Limiting to 500 for now for performance reasons)
-		for(var i = 0; i < 500; i++) {
+		for(var i = 0; i < 700; i++) {
     	var obj = json[i];
     	try {
     		var title = obj.name.text;
@@ -90,8 +90,9 @@ angular.module('myApp.events', ['ngRoute'])
     	result[0].events.push(oneEvent);
 
 		}
-
+		JSON.stringify(result);
 		$scope.eventSources = result;
+		console.log($scope.eventSources);
 
 	});
 
