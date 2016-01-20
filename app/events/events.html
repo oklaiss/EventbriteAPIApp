@@ -1,0 +1,16 @@
+<table>
+	<thead>
+		<tr>
+			<th>
+				Events
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		<input type="text" ng-model="eventFilter" placeholder="Search..."/>
+		<tr ng-repeat="event in listEvents | filter: searchFilter">
+			<td><a target="_blank" href="{{event.url}}">{{event.name.text}}</a></td>
+			<td>{{event.start.local}}</td>
+		</tr>
+	</tbody>
+</table>

@@ -28,3 +28,5 @@
   content: "";
   padding: 0;
 }
+
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
