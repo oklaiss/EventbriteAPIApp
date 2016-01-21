@@ -15,6 +15,9 @@ angular.module('myApp.events', ['ngRoute'])
 
 .controller('EventsCtrl', function($scope, ergastAPIservice) {
 
+	$scope.showLoading = true;
+	$scope.showResults = false;
+
 	$scope.listEvents = [];
 
 	// logic to be able to search and filter results by event name
@@ -26,6 +29,8 @@ angular.module('myApp.events', ['ngRoute'])
 	// calling API service
 	ergastAPIservice.getEvents().success(function (response) {
 		//Dig into JSON response here to get just events
+		$scope.showLoading = false;
+		$scope.showResults = true;
 		$scope.listEvents = response.events;
 	});
 
@@ -47,8 +52,11 @@ angular.module('myApp.events', ['ngRoute'])
 
 .controller('CalendarCtrl', function($scope, ergastAPIservice) {
 
+	$scope.loadingCalendar = true;
+
 	// define array for FullCalendar
 	$scope.eventSources = [];
+	
 
 	// API call
 	ergastAPIservice.getEvents().success(function (response) {
@@ -90,27 +98,28 @@ angular.module('myApp.events', ['ngRoute'])
     	result[0].events.push(oneEvent);
 
 		}
+		$scope.loadingCalendar = false;
 		JSON.stringify(result);
 		$scope.eventSources = result;
 		console.log($scope.eventSources);
 
 	});
 
-		// $scope.eventSources = [	// put the array in the 'events' property
-		// 	{
-		// 		events: [
-		// 			{
-		// 				"title": "This is the first event",
-		// 				"start": "2016-02-02"
-		// 			},
-		// 			{
-		// 				"title": "This is the second event",
-		// 				"start": "2016-02-04"
-		// 			}
-		// 		],
-		// 		color: 'blue',	// option
-		// 		textColor: 'white' // option
-		// 	}
-		// ]
+	$scope.eventSources = [	// put the array in the 'events' property
+			{
+				events: [
+					{
+						"title": "This is the first event",
+						"start": "2016-02-02"
+					},
+					{
+						"title": "This is the second event",
+						"start": "2016-02-04"
+					}
+				],
+				color: 'blue',	// option
+				textColor: 'white' // option
+			}
+		]
 
 });

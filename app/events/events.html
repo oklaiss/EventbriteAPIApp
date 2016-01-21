@@ -1,15 +1,18 @@
+<h1>Events</h1>
+
 <table>
 	<thead>
-		<tr>
+		<!-- <tr>
 			<th>
 				Events
 			</th>
-		</tr>
+		</tr> -->
 	</thead>
 	<tbody>
 		<input type="text" ng-model="eventFilter" placeholder="Search..."/>
-		<tr ng-repeat="event in listEvents | filter: searchFilter">
-			<td><a target="_blank" href="{{event.url}}">{{event.name.text}}</a></td>
+		<p ng-show="showLoading">Loading...</p>
+		<tr ng-show="showResults" ng-repeat="event in listEvents | filter: searchFilter">
+			<td><a class="eventLink"target="_blank" href="{{event.url}}">{{event.name.text}}</a></td>
 			<td>{{event.start.local}}</td>
 		</tr>
 	</tbody>
