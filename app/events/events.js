@@ -56,20 +56,58 @@ angular.module('myApp.events', ['ngRoute'])
 
 	// define array for FullCalendar
 	$scope.eventSources = [];
-	
+
+	// $scope.eventSources = [	// put the array in the 'events' property
+	// 		{
+	// 			events: [
+	// 				{
+	// 					"title": "TEST 45th Annual Barrett-Jackson Scottsdale Collector Car Auction -  Saturday, January 23rd - Sunday, January 31st",
+	// 					"start": "2016-02-02T08:00:00"
+	// 				},
+	// 				{
+	// 					"title": "This is the second event",
+	// 					"start": "2016-02-04"
+	// 				}
+	// 			]
+	// 			// color: 'blue',	// option
+	// 			// textColor: 'white' // option
+	// 		}
+	// 	]
+
+		$scope.eventSources = [	// put the array in the 'events' property
+			[
+					{
+						"title": "TEST 45th Annual Barrett-Jackson Scottsdale Collector Car Auction -  Saturday, January 23rd - Sunday, January 31st",
+						"start": "2016-02-02T08:00:00"
+					},
+					{
+						"title": "This is the second event",
+						"start": "2016-02-04"
+					}
+				// color: 'blue',	// option
+				// textColor: 'white' // option
+			]
+		]
+
+	console.log($scope.eventSources);
 
 	// API call
 	ergastAPIservice.getEvents().success(function (response) {
 		// Dig into JSON response here
 		var json = response.events;
+		// var result =
+		// [
+		// 	{
+		// 		events: [
+		// 		]
+		// 		// color: 'blue',	// option
+		// 		// textColor: 'white' // option
+		// 	}
+		// ];
 		var result =
 		[
-			{
-				events: [
-				],
-				color: 'blue',	// option
-				textColor: 'white' // option
-			}
+			[
+			]
 		];
 		// Format to work with AngularJS FullCalendar (Limiting to 500 for now for performance reasons)
 		for(var i = 0; i < 700; i++) {
@@ -95,31 +133,18 @@ angular.module('myApp.events', ['ngRoute'])
 
     	console.log("oneEvent" + oneEvent);
 
-    	result[0].events.push(oneEvent);
+    	// result[0].events.push(oneEvent);
+    	// result[0].push(oneEvent);
+    	$scope.eventSources[0].push(oneEvent);
 
 		}
 		$scope.loadingCalendar = false;
-		JSON.stringify(result);
+		// JSON.stringify(result);
 		$scope.eventSources = result;
 		console.log($scope.eventSources);
 
 	});
 
-	$scope.eventSources = [	// put the array in the 'events' property
-			{
-				events: [
-					{
-						"title": "This is the first event",
-						"start": "2016-02-02"
-					},
-					{
-						"title": "This is the second event",
-						"start": "2016-02-04"
-					}
-				],
-				color: 'blue',	// option
-				textColor: 'white' // option
-			}
-		]
+	
 
 });
