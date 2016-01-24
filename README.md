@@ -43,6 +43,18 @@ this server is:
 npm start
 ```
 
+#### UI-Calendar Plug-in Bug Fix
+
+Before using the application, a change needs to be made to the source code for the UI-Calendar plug-in for it to work correctly. While building this application, I stumbled upon a known bug in the UI-Calendar plug-in that causes events to disappear when switching to any month other than the current month. 
+
+To fix this bug, go to line 278 in bower_components/angular-ui-calendar/src/calendar.js, and change the code to match this:
+
+```
+eventsWatcher.onAdded = function(event) {
+          calendar.fullCalendar('renderEvent', event,true);
+        };
+```
+
 Now browse to the app at `http://localhost:8000/app/index.html`.
 
 
