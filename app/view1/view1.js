@@ -11,4 +11,6 @@ angular.module('myApp.view1', ['ngRoute'])
 
 .controller('View1Ctrl', [function() {
 
+	// no controller action necessary for home view
+
 }]);

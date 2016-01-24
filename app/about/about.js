@@ -11,4 +11,6 @@ angular.module('myApp.about', ['ngRoute'])
 
 .controller('AboutCtrl', [function() {
 
+	// no controller action necessary for about view
+
 }]);

@@ -13,6 +13,7 @@ angular.module('myApp.events', ['ngRoute'])
   });
 }])
 
+// controller for events view
 .controller('EventsCtrl', function($scope, ergastAPIservice) {
 
 	$scope.showLoading = true;
@@ -50,42 +51,16 @@ angular.module('myApp.events', ['ngRoute'])
 
 })
 
+// controller for calendar view
 .controller('CalendarCtrl', function($scope, ergastAPIservice) {
 
 	$scope.loadingCalendar = true;
 
 	// define array for FullCalendar
-	$scope.eventSources = [];
-
-	// $scope.eventSources = [	// put the array in the 'events' property
-	// 		{
-	// 			events: [
-	// 				{
-	// 					"title": "TEST 45th Annual Barrett-Jackson Scottsdale Collector Car Auction -  Saturday, January 23rd - Sunday, January 31st",
-	// 					"start": "2016-02-02T08:00:00"
-	// 				},
-	// 				{
-	// 					"title": "This is the second event",
-	// 					"start": "2016-02-04"
-	// 				}
-	// 			]
-	// 			// color: 'blue',	// option
-	// 			// textColor: 'white' // option
-	// 		}
-	// 	]
+	// $scope.eventSources = [];
 
 		$scope.eventSources = [	// put the array in the 'events' property
 			[
-					{
-						"title": "TEST 45th Annual Barrett-Jackson Scottsdale Collector Car Auction -  Saturday, January 23rd - Sunday, January 31st",
-						"start": "2016-02-02T08:00:00"
-					},
-					{
-						"title": "This is the second event",
-						"start": "2016-02-04"
-					}
-				// color: 'blue',	// option
-				// textColor: 'white' // option
 			]
 		]
 
@@ -95,22 +70,8 @@ angular.module('myApp.events', ['ngRoute'])
 	ergastAPIservice.getEvents().success(function (response) {
 		// Dig into JSON response here
 		var json = response.events;
-		// var result =
-		// [
-		// 	{
-		// 		events: [
-		// 		]
-		// 		// color: 'blue',	// option
-		// 		// textColor: 'white' // option
-		// 	}
-		// ];
-		var result =
-		[
-			[
-			]
-		];
 		// Format to work with AngularJS FullCalendar (Limiting to 500 for now for performance reasons)
-		for(var i = 0; i < 700; i++) {
+		for(var i = 0; i < 500; i++) {
     	var obj = json[i];
     	try {
     		var title = obj.name.text;
@@ -126,21 +87,17 @@ angular.module('myApp.events', ['ngRoute'])
     	console.log(start);
 
     	// create json object
-    	// var oneEvent = {};
-    	// oneEvent['title'] = title;
-    	// oneEvent['start'] = start;
     	var oneEvent = { title : title, start : start };
 
     	console.log("oneEvent" + oneEvent);
 
-    	// result[0].events.push(oneEvent);
-    	// result[0].push(oneEvent);
+    	// push event to eventSources array
     	$scope.eventSources[0].push(oneEvent);
 
 		}
 		$scope.loadingCalendar = false;
 		// JSON.stringify(result);
-		$scope.eventSources = result;
+		// $scope.eventSources = result;
 		console.log($scope.eventSources);
 
 	});
