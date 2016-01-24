@@ -2,11 +2,14 @@
 
 <table>
 	<thead>
-		<!-- <tr>
-			<th>
+		<tr>
+			<th ng-show="showResults">
 				Events
 			</th>
-		</tr> -->
+			<th ng-show="showResults">
+				Date/Time
+			</th>
+		</tr>
 	</thead>
 	<tbody>
 		<input type="text" ng-model="eventFilter" placeholder="Search..."/>
