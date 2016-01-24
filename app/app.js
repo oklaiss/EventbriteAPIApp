@@ -4,7 +4,6 @@
 angular.module('myApp', [
   'ngRoute',
   'ui.calendar',
-  'ui.bootstrap',
   'myApp.view1',
   'myApp.about',
   'myApp.events',
