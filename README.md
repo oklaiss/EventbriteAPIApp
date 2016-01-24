@@ -1,5 +1,7 @@
 # AngularJS Eventbrite API App
-This project is a AngularJS application that visualizes data from the Eventbrite API on popular events. This application displays a calendar of the most popular Eventbrite events as well as a searchable list of those same events with links to their respective Eventbrite pages.
+This project is a AngularJS application that visualizes data from the Eventbrite API on popular events. This application displays a calendar of the most popular Eventbrite events as well as a searchable list of those same events with links to their respective Eventbrite pages. 
+
+A skeleton app from `https://github.com/oklaiss/angular-seed` was used to start this project.
 
 ## Run Locally
 
